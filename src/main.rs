@@ -78,10 +78,14 @@ fn run_prompt() {
 }
 
 fn run(source: &str) {
-    // todo: Get an instance of a scanner.
-    // todo: scan the source code for tokens.
+    let mut scanner = scanner::Scanner::new(source.to_string());
+    let tokens = scanner.scan_tokens();
 
+    for token in tokens {
+        println!("{:?}", token.token_type);
+    }
+    
     // todo: for each token, print the token.
-    println!("ℹ️ Source:");
-    println!("{}", source);
+    // println!("ℹ️ Source:");
+    // println!("{}", source);
 }

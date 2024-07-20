@@ -1,4 +1,5 @@
 // All the different token types for the Lox language.
+#[derive(Debug, Clone)]
 pub enum TokenType {
     // Single-character tokens.
     LeftParen,
