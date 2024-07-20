@@ -1,7 +1,8 @@
-enum TokenType {
+// All the different token types for the Lox language.
+pub enum TokenType {
     // Single-character tokens.
     LeftParen,
-    RightParent,
+    RightParen,
     LeftBrace,
     RightBrace,
     Comma,

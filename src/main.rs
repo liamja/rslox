@@ -1,4 +1,6 @@
+mod token;
 mod token_type;
+mod scanner;
 
 use std::io::Write;
 use std::{env, fs, io, process};
