@@ -1,6 +1,6 @@
-use std::collections::HashMap;
 use crate::token::Token;
 use crate::token_type::TokenType;
+use std::collections::HashMap;
 
 pub(crate) struct Scanner {
     source: String,
@@ -46,8 +46,13 @@ impl Scanner {
             self.start = self.current;
             self.scan_token()
         }
-        
-        self.tokens.push(Token::new(TokenType::Eof, "".to_string(), "".to_string(), self.line));
+
+        self.tokens.push(Token::new(
+            TokenType::Eof,
+            "".to_string(),
+            "".to_string(),
+            self.line,
+        ));
         self.tokens.as_ref()
     }
 
@@ -141,10 +146,13 @@ impl Scanner {
         }
 
         let text = self.source[self.start..self.current].to_string();
-        
+
         // Check if the identifier is a reserved keyword.
-        let token_type = self.keywords.get(&text).map_or_else(|| TokenType::Identifier, |t| t.clone());
-        
+        let token_type = self
+            .keywords
+            .get(&text)
+            .map_or_else(|| TokenType::Identifier, |t| t.clone());
+
         self.add_token(token_type, text);
     }
 
@@ -163,7 +171,10 @@ impl Scanner {
             }
         }
 
-        self.add_token(TokenType::Number, self.source[self.start..self.current].to_string())
+        self.add_token(
+            TokenType::Number,
+            self.source[self.start..self.current].to_string(),
+        )
     }
 
     fn string(&mut self) {

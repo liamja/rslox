@@ -1,6 +1,6 @@
+mod scanner;
 mod token;
 mod token_type;
-mod scanner;
 
 use std::io::Write;
 use std::{env, fs, io, process};
@@ -84,7 +84,7 @@ fn run(source: &str) {
     for token in tokens {
         println!("{:?}", token.token_type);
     }
-    
+
     // todo: for each token, print the token.
     // println!("ℹ️ Source:");
     // println!("{}", source);
